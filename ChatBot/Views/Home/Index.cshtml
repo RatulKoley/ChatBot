@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Index";
+    var answer = ViewBag.Answer as string;
+    var name = ViewBag.Name as string;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e9ecef;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .chat-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .chat-header {
+            font-size: 28px;
+            font-weight: bold;
+            color: #495057;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #6c757d;
+            padding-bottom: 10px;
+        }
+
+        .form-group label {
+            font-weight: bold;
+        }
+
+        .form-group input {
+            border-radius: 8px;
+        }
+
+        .chat-input {
+            margin-top: 20px;
+        }
+
+            .chat-input input {
+                width: calc(100% - 100px);
+                display: inline-block;
+            }
+
+            .chat-input button {
+                width: 80px;
+                display: inline-block;
+            }
+
+        .answer-box {
+            margin-top: 20px;
+        }
+
+            .answer-box h3 {
+                margin-bottom: 10px;
+            }
+
+            .answer-box p {
+                background-color: #e2e3e5;
+                padding: 10px;
+                border-radius: 8px;
+            }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">AI ChatBot By Ratul</div>
+        <form method="post" action="@Url.Action("Index")">
+            <div class="form-group">
+                <label for="query">Enter Your Query</label>
+                <input type="text" class="form-control" id="query" name="query" placeholder="Type your message here" />
+            </div>
+            <button type="submit" class="btn btn-primary" id="sendmessage">Send</button>
+        </form>
+
+        @if (!string.IsNullOrEmpty(answer))
+        {
+            <div class="answer-box">
+                <h3>Answer:</h3>
+                <p>@answer</p>
+            </div>
+        }
+    </div>
+</body>
+</html>
